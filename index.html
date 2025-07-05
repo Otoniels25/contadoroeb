@@ -4,50 +4,96 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Otoniel & Beatriz 💙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      margin: 0;
+      font-family: 'Great Vibes', cursive;
+      background: linear-gradient(to bottom, #ffe6f0, #fff0f5);
       text-align: center;
       padding: 30px;
-      color: #333;
+      color: #b8005c;
+      position: relative;
+      overflow-x: hidden;
     }
     h1 {
-      color: #0077b6;
-      font-size: 2.5em;
+      font-size: 3em;
+      text-shadow: 1px 1px 2px #fff;
     }
     .contador {
       font-size: 2em;
       margin: 20px 0;
+      animation: glow 2s infinite alternate;
     }
     .mensagem {
       margin: 30px 0;
-      font-size: 1.3em;
-      color: #444;
+      font-size: 1.5em;
+      font-weight: 500;
     }
     .fotos {
-      margin-top: 40px;
+      margin-top: 60px;
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
+      gap: 50px;
     }
     .foto-item {
       max-width: 250px;
+      position: relative;
+    }
+    .foto-item::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      width: 2px;
+      height: 50px;
+      background-color: #ff99cc;
+      transform: translateX(-50%);
+    }
+    .foto-item:first-child::before {
+      display: none;
     }
     .foto-item img {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 50%;
+      border: 4px solid #ff99cc;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .foto-item img:hover {
+      transform: scale(1.05);
     }
     .legenda {
       margin-top: 8px;
-      font-size: 0.95em;
-      color: #555;
+      font-size: 1.1em;
+      color: #b8005c;
     }
-    iframe {
-      margin-top: 30px;
-      border-radius: 12px;
+    .final-msg {
+      margin-top: 60px;
+      font-size: 1.7em;
+      color: #c2185b;
+      text-shadow: 1px 1px 2px #fff;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff99cc; }
+      to { text-shadow: 0 0 20px #ff66aa; }
+    }
+
+    .heart {
+      position: fixed;
+      top: -50px;
+      color: #ff6699;
+      font-size: 24px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -55,11 +101,11 @@
   <h1>Otoniel & Beatriz 💙</h1>
 
   <div class="contador">
-    Estamos juntos há <span id="dias"></span> dias ✨
+    Estamos juntos há <span id="dias"></span> dias (<span id="meses"></span> meses) ✨
   </div>
 
   <div class="mensagem">
-    "Cada dia ao seu lado é um presente. Obrigado por caminhar comigo desde 06/04/2025. Que venham muitos outros dias felizes a dois."
+    "Cada dia ao seu lado é um presente. Obrigado por caminhar comigo desde 06/04/2025."
   </div>
 
   <iframe width="300" height="170" src="https://www.youtube.com/embed/_4LJTzAYGO4" title="A Dois" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -91,12 +137,29 @@
     </div>
   </div>
 
+  <div class="final-msg">
+    Eu te amo em tudo, feliz dia 06, feliz <span id="mesesFinal"></span> meses juntos! ❤️
+  </div>
+
   <script>
     const dataNamoro = new Date('2025-04-06');
     const hoje = new Date();
     const diff = hoje - dataNamoro;
     const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const meses = Math.floor(dias / 30.44);
+
     document.getElementById('dias').textContent = dias;
+    document.getElementById('meses').textContent = meses;
+    document.getElementById('mesesFinal').textContent = meses;
+
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      heart.innerText = '💖';
+      document.body.appendChild(heart);
+    }
   </script>
 </body>
 </html>
