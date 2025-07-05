@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Otoniel & Beatriz 💙</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -13,7 +13,6 @@
       text-align: center;
       padding: 30px;
       color: #b8005c;
-      position: relative;
       overflow-x: hidden;
     }
     h1 {
@@ -32,7 +31,6 @@
     }
     .fotos {
       margin-top: 60px;
-      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -93,19 +91,6 @@
         opacity: 0;
       }
     }
-    .whatsapp-btn {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 12px 24px;
-      font-size: 1.2em;
-      background-color: #25D366;
-      color: white;
-      border-radius: 30px;
-      text-decoration: none;
-      font-family: sans-serif;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease;
-    }
   </style>
 </head>
 <body>
@@ -115,9 +100,7 @@
     Estamos juntos há <span id="dias"></span> dias (<span id="meses"></span> meses) ✨
   </div>
 
-  <div class="mensagem">
-    "Cada dia ao seu lado é um presente. Obrigado por caminhar comigo desde 06/04/2025."
-  </div>
+  <div class="mensagem">Carregando uma frase romântica...</div>
 
   <iframe width="300" height="170" src="https://www.youtube.com/embed/_4LJTzAYGO4" title="A Dois" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -148,14 +131,7 @@
     </div>
   </div>
 
-  <div class="final-msg">
-    Eu te amo em tudo, feliz dia 06, feliz <span id="mesesFinal"></span> meses juntos! ❤️
-  </div>
-
-  <a href="https://wa.me/5581973215117?text=Oi%20meu%20amor!%20%F0%9F%92%96%20S%C3%B3%20passei%20aqui%20pra%20dizer%20mais%20uma%20vez%3A%20feliz%203%20meses!%20Eu%20te%20amo%20demais!%20%F0%9F%98%8D%E2%9C%A8"
-     target="_blank" class="whatsapp-btn">
-    💌 Enviar no WhatsApp
-  </a>
+  <div class="final-msg" id="final-msg"></div>
 
   <script>
     const dataNamoro = new Date('2025-04-06');
@@ -166,8 +142,33 @@
 
     document.getElementById('dias').textContent = dias;
     document.getElementById('meses').textContent = meses;
-    document.getElementById('mesesFinal').textContent = meses;
 
+    // Frases de amor aleatórias
+    const frases = [
+      "Você é o melhor presente que Deus me deu. 💝",
+      "Cada dia com você é um capítulo feliz na nossa história. 📖",
+      "Seu sorriso ilumina o meu dia. 😍",
+      "Te amar é fácil, te ter é bênção. ✨",
+      "Com você tudo faz sentido. 💑",
+      "Nosso amor é resposta de oração. 🙏❤️",
+      "Você é minha paz e meu lar. 🏡💕"
+    ];
+    const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+    document.querySelector(".mensagem").textContent = fraseAleatoria;
+
+    // Efeito de digitação na mensagem final
+    const textoFinal = "Eu te amo em tudo, feliz dia 06, feliz " + meses + " meses juntos! ❤️";
+    let i = 0;
+    function digitar() {
+      if (i < textoFinal.length) {
+        document.getElementById("final-msg").textContent += textoFinal.charAt(i);
+        i++;
+        setTimeout(digitar, 60);
+      }
+    }
+    digitar();
+
+    // Corações caindo
     for (let i = 0; i < 30; i++) {
       const heart = document.createElement('div');
       heart.className = 'heart';
