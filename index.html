@@ -97,7 +97,7 @@
   <h1>Otoniel & Beatriz 💙</h1>
 
   <div class="contador">
-    Estamos juntos há <span id="dias"></span> dias (<span id="meses"></span> meses) ✨
+    Estamos juntos há <span id="dias">...</span> dias (<span id="meses">...</span> meses) ✨
   </div>
 
   <div class="mensagem">Carregando uma frase romântica...</div>
@@ -140,10 +140,11 @@
     const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
     const meses = Math.floor(dias / 30.44);
 
+    // Mostrar contador
     document.getElementById('dias').textContent = dias;
     document.getElementById('meses').textContent = meses;
 
-    // Frases de amor aleatórias
+    // Frase aleatória
     const frases = [
       "Você é o melhor presente que Deus me deu. 💝",
       "Cada dia com você é um capítulo feliz na nossa história. 📖",
@@ -152,12 +153,11 @@
       "Com você tudo faz sentido. 💑",
       "Nosso amor é resposta de oração. 🙏❤️",
       "Você é minha paz e meu lar. 🏡💕"
-      "Você é importante para mim. 😍",
     ];
     const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
     document.querySelector(".mensagem").textContent = fraseAleatoria;
 
-    // Efeito de digitação na mensagem final
+    // Digitação na frase final
     const textoFinal = "Eu te amo em tudo, feliz dia 06, feliz " + meses + " meses juntos! ❤️";
     let i = 0;
     function digitar() {
