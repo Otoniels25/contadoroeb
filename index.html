@@ -100,7 +100,7 @@
     Estamos juntos há <span id="dias">...</span> dias (<span id="meses">...</span> meses) ✨
   </div>
 
-  <div class="mensagem">Carregando uma frase romântica...</div>
+  <div class="mensagem" id="mensagem">Carregando uma frase romântica...</div>
 
   <iframe width="300" height="170" src="https://www.youtube.com/embed/_4LJTzAYGO4" title="A Dois" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -134,50 +134,51 @@
   <div class="final-msg" id="final-msg"></div>
 
   <script>
-    const dataNamoro = new Date('2025-04-06');
-    const hoje = new Date();
-    const diff = hoje - dataNamoro;
-    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const meses = Math.floor(dias / 30.44);
+    document.addEventListener("DOMContentLoaded", function () {
+      const dataNamoro = new Date('2025-04-06');
+      const hoje = new Date();
+      const diff = hoje - dataNamoro;
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const meses = Math.floor(dias / 30.44);
 
-    // Mostrar contador
-    document.getElementById('dias').textContent = dias;
-    document.getElementById('meses').textContent = meses;
+      document.getElementById('dias').textContent = dias;
+      document.getElementById('meses').textContent = meses;
 
-    // Frase aleatória
-    const frases = [
-      "Você é o melhor presente que Deus me deu. 💝",
-      "Cada dia com você é um capítulo feliz na nossa história. 📖",
-      "Seu sorriso ilumina o meu dia. 😍",
-      "Te amar é fácil, te ter é bênção. ✨",
-      "Com você tudo faz sentido. 💑",
-      "Nosso amor é resposta de oração. 🙏❤️",
-      "Você é minha paz e meu lar. 🏡💕"
-    ];
-    const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
-    document.querySelector(".mensagem").textContent = fraseAleatoria;
+      // Frases de amor aleatórias
+      const frases = [
+        "Você é o melhor presente que Deus me deu. 💝",
+        "Cada dia com você é um capítulo feliz na nossa história. 📖",
+        "Seu sorriso ilumina o meu dia. 😍",
+        "Te amar é fácil, te ter é bênção. ✨",
+        "Com você tudo faz sentido. 💑",
+        "Nosso amor é resposta de oração. 🙏❤️",
+        "Você é minha paz e meu lar. 🏡💕"
+      ];
+      const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+      document.getElementById("mensagem").textContent = fraseAleatoria;
 
-    // Digitação na frase final
-    const textoFinal = "Eu te amo em tudo, feliz dia 06, feliz " + meses + " meses juntos! ❤️";
-    let i = 0;
-    function digitar() {
-      if (i < textoFinal.length) {
-        document.getElementById("final-msg").textContent += textoFinal.charAt(i);
-        i++;
-        setTimeout(digitar, 60);
+      // Digitação frase final
+      const textoFinal = "Eu te amo em tudo, feliz dia 06, feliz " + meses + " meses juntos! ❤️";
+      let i = 0;
+      function digitar() {
+        if (i < textoFinal.length) {
+          document.getElementById("final-msg").textContent += textoFinal.charAt(i);
+          i++;
+          setTimeout(digitar, 60);
+        }
       }
-    }
-    digitar();
+      digitar();
 
-    // Corações caindo
-    for (let i = 0; i < 30; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-      heart.innerText = '💖';
-      document.body.appendChild(heart);
-    }
+      // Corações caindo
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        heart.innerText = '💖';
+        document.body.appendChild(heart);
+      }
+    });
   </script>
 </body>
 </html>
