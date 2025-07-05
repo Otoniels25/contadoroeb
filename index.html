@@ -80,7 +80,6 @@
       from { text-shadow: 0 0 10px #ff99cc; }
       to { text-shadow: 0 0 20px #ff66aa; }
     }
-
     .heart {
       position: fixed;
       top: -50px;
@@ -88,12 +87,24 @@
       font-size: 24px;
       animation: fall linear infinite;
     }
-
     @keyframes fall {
       to {
         transform: translateY(110vh);
         opacity: 0;
       }
+    }
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      background-color: #25D366;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-family: sans-serif;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
     }
   </style>
 </head>
@@ -140,6 +151,11 @@
   <div class="final-msg">
     Eu te amo em tudo, feliz dia 06, feliz <span id="mesesFinal"></span> meses juntos! ❤️
   </div>
+
+  <a href="https://wa.me/5581973215117?text=Oi%20meu%20amor!%20%F0%9F%92%96%20S%C3%B3%20passei%20aqui%20pra%20dizer%20mais%20uma%20vez%3A%20feliz%203%20meses!%20Eu%20te%20amo%20demais!%20%F0%9F%98%8D%E2%9C%A8"
+     target="_blank" class="whatsapp-btn">
+    💌 Enviar no WhatsApp
+  </a>
 
   <script>
     const dataNamoro = new Date('2025-04-06');
